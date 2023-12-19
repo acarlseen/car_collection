@@ -1,0 +1,7 @@
+flask
+python-dotenv
+werkzeug
+flask-login
+flask-marshmallow
+flask-migrate
+flask-sqlalchemy
