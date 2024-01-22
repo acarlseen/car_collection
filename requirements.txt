@@ -5,3 +5,8 @@ flask-login
 flask-marshmallow
 flask-migrate
 flask-sqlalchemy
+Flask-WTF
+marshmallow
+marshmallow-sqlalchemy
+Psycopg2-binary
+SQLAlchemy

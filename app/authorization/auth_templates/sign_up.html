@@ -1,13 +1,60 @@
-{{ extends base.html }}
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('authorization.static', filename='css/style.css')}}">
+{% endblock %}
 
 {% block content %}
-<main class="container p-5">
-    <div class="row">
-        <aside class="col-12 col-md-6">
-            <h2>Sign Up</h2>
-            {% include 'forms.html' %}
-        </aside>
-    </div>
-</main>
+<div class="grid-container">
+    <div action="/signup" class="form-container">
+        <form method="POST">
+            <fieldset class="email-field">
+                {{ form.email.label }}
+                <span class="input-field">{{ form.email(class_="input-field") }}</span>
+                {% if form.email.errors %}
+                    <ul class="errors">
+                    {% for error in form.email.errors %}
+                        <li>{{ error }} </li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            </fieldset>
 
+            <fieldset class="password-field">
+                {{ form.password.label }}
+                {{ form.password }}
+                {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </fieldset>
+
+            <fieldset class="confirm-password-field">
+                {{ form.confirm.label }}
+                {{ form.confirm }}
+                {% if form.confirm.errors %}
+                <ul class="errors">
+                    {% for error in form.confirm.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </fieldset>
+
+            <div class="submit-button">
+                {{ form.submit }}
+            </div>
+        </form>
+
+        <div class="login-prompt">
+            <div>
+                <span>Alreaady have an account?</span>
+                <a href="{{ url_for('authorization.sign_in') }}" class="login-link">Log In.</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

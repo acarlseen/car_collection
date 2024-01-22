@@ -1,0 +1,72 @@
+/* nav bar css */
+*{
+    background-color: black;
+}
+
+.navlist-container {
+    display: grid;
+    position: fixed;
+    top: 0;
+    margin-top: 0px;
+    
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: black;
+
+    @media(min-width: 600px){
+    height: 50px;
+    width: 100vw;
+    grid-template-columns: 1fr repeat(6,100px);
+    gap: 10px;
+    justify-items: center;
+    }
+    .fullwidth {
+        grid-column: 1/4;
+
+        @media(min-width: 600px){
+            grid-column: 1/2;
+            justify-self: start;
+        }
+    }
+}
+
+.nav-item{
+    color: white;
+    text-decoration: none;
+}
+
+/* footer style*/
+footer.container{
+    background-color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: small;
+
+
+    display:grid;
+    grid-template-columns: repeat(3, 30%);
+    justify-content: center;
+
+}
+
+ul.contact-list{
+    list-style-type: none;
+}
+
+.footer-head{
+    color: lightgray;
+    font-size: medium;
+}
+
+.footer-list{
+    list-style-type: none;
+}
+
+.footer-link{
+    color: lightgray;
+    text-decoration: none;
+}

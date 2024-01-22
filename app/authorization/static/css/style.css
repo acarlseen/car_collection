@@ -1,0 +1,18 @@
+.grid-container{
+    display: grid;
+    grid-template: [row1-start] "margin form margin" 1fr [row1-end];
+
+    background-color: white;
+
+    margin-top: 100px;
+}
+
+.form-container{
+    grid-area: form;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.input-field{
+    background-color: white;
+}
