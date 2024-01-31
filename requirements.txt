@@ -1,6 +1,5 @@
+Email-validator
 flask
-python-dotenv
-werkzeug
 flask-login
 flask-marshmallow
 flask-migrate
@@ -9,4 +8,6 @@ Flask-WTF
 marshmallow
 marshmallow-sqlalchemy
 Psycopg2-binary
+python-dotenv
 SQLAlchemy
+werkzeug

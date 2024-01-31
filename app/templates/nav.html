@@ -2,23 +2,26 @@
 <nav class="navbar grid">
     <ul class="navlist-container">
         <li class="navlist fullwidth">
-            <a href="#" class="nav-item">Home</a>
+            <a href="{{url_for('site.home') }}" class="nav-item">Home</a>
         </li>
-        <li class="navlist">
-            <a href="#" class="nav-item">Sign Up</a>
-        </li>
-        <li class="navlist">
-            <a href="#" class="nav-item">Sign In</a>
-        </li>
-        <li class="navlist">
-            <a href="#" class="nav-item">Profile</a>
-        </li>
-        <li class="navlist">
-            <a href="#" class="nav-item">Collection</a>
-        </li>
-        <li class="navlist">
-            <a href="#" class="nav-item">Logout</a>
-        </li>
+        {% if not current_user.is_authenticated %}
+            <li class="navlist">
+                <a href="{{ url_for('authorization.sign_up') }}" class="nav-item">Sign Up</a>
+            </li>
+            <li class="navlist">
+                <a href="{{ url_for('authorization.sign_in') }}" class="nav-item">Sign In</a>
+            </li>
+        {% else %}
+            <li class="navlist">
+                <a href="{{ url_for('site.profile') }}" class="nav-item">Profile</a>
+            </li>
+            <li class="navlist">
+                <a href="{{ url_for('site.collection') }}" class="nav-item">Collection</a>
+            </li>
+            <li class="navlist">
+                <a href="{{ url_for('authorization.sign_out') }}" class="nav-item">Logout</a>
+            </li>
+        {% endif %}
     </ul>
 </nav>
 {% endblock %}
