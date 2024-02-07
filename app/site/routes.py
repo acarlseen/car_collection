@@ -6,7 +6,7 @@ site = Blueprint('site', __name__, template_folder='site_temps', static_folder='
 
 @site.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', title='Car Collection')
 
 @site.route('/collection')
 @login_required
@@ -18,5 +18,6 @@ def collection():
 def profile(user_id):
     user = User.query.filter_by(id = user_id).first()
     return render_template('profile.html',
+                           title='Car Collection - Profile',
                            user=user)
 

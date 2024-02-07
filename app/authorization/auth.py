@@ -33,7 +33,7 @@ def sign_in():
         print(form.validate())
         print(form.errors)
         raise Exception('Incorrect form data, check form')
-    return render_template('/sign_in.html', form=form)
+    return render_template('/sign_in.html', title='Car Collection - Sign In', form=form)
 
 @authorization.route('/signup', methods=['GET', 'POST'])
 def sign_up():

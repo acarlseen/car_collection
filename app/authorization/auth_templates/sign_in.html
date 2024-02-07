@@ -7,6 +7,8 @@
 />
 {% endblock %} 
 
+{% block title %}{{title}}{% endblock %}
+
 {% block content %}
 <div class="grid-container" style="background-image: url( {{ url_for('authorization.static', filename='img/vitali-adutskevich-BwL_FhYzQMU-unsplash.jpg')}})">
   <div class="signin-object">
