@@ -46,7 +46,6 @@ def sign_up():
         if request.method == 'POST' and form.validate_on_submit():
             email = form.email.data
             password = form.password.data
-            print(email, password)
 
             user = User(email, password=password)
 
@@ -59,8 +58,7 @@ def sign_up():
             print('form submitted successfully, some other problem')
         elif not form.validate_on_submit():
             print('The form is not valid')
-            print(form.validate())
-            print(form.errors)
+
 
     except:
         print('Something went horribly wrong')

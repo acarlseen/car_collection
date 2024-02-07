@@ -34,7 +34,7 @@ class User(db.Model, UserMixin):
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
-        self.user_id = self.set_id()
+        self.id = self.set_id()
         self.password = self.set_password(password)
         self.token = self.generate_token()
     
@@ -54,8 +54,9 @@ class User(db.Model, UserMixin):
         return f'User {self.email} has been added to the database'
     
 class Car(db.Model):
+    id: Mapped[str] = mapped_column('id', String, primary_key=True, nullable=False)
     current_owner : Mapped[str] = mapped_column(String(), ForeignKey(User.id))
-    vin : Mapped[str] = mapped_column(String(), primary_key=True, nullable=False)
+    vin : Mapped[str] = mapped_column(String(), nullable=False)
     make : Mapped[str] = mapped_column(String(), default='')
     model : Mapped[str] = mapped_column(String(), default='')
     year : Mapped[int] = mapped_column(Integer(), default='')
@@ -63,7 +64,8 @@ class Car(db.Model):
     car_name : Mapped[str] = mapped_column(String(60))
     car_desc : Mapped[str] = mapped_column(String(300))
 
-    def __init__(self, vin, make='', model='', year='', color='', car_name='', car_desc=''):
+    def __init__(self, vin, make='', model='', year='', color='', car_name='', car_desc='', current_owner=''):
+        self.id = self.set_id()
         self.vin = vin
         self.make = make
         self.model = model
@@ -71,3 +73,22 @@ class Car(db.Model):
         self.color = color
         self.car_name = car_name
         self.car_desc = car_desc
+        self.current_owner = current_owner
+
+    def set_id(self):
+        return str(uuid.uuid4())
+
+
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('email', 'first_name', 'last_name', 'date_joined', 'website')
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
+
+class CarSchema(ma.Schema):
+    class Meta:
+        fields = ('make', 'model', 'year', 'color', 'car_name')\
+        
+car_schema = CarSchema()
+cars_schema = CarSchema(many=True)

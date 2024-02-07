@@ -23,10 +23,12 @@ def create_app():
         # Import blueprints
         from .site.routes import site
         from .authorization.auth import authorization
+        from .api.routes import api
 
         # Register blueprints
         app.register_blueprint(site)
         app.register_blueprint(authorization)
+        app.register_blueprint(api)
 
         #Create database models
         db.create_all()
