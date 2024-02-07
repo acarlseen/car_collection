@@ -54,6 +54,11 @@
         font-size: 20pt;
         color: lightgray;
         background-color: rgba(0,0,0,0);
+        transition: color .2s ease-in; 
+    }
+
+    .signup-link:hover{
+        color: rgba(247, 206, 40, 1);
     }
 
 }
