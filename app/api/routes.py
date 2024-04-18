@@ -8,7 +8,8 @@ api = Blueprint('api', __name__,
 
 @api.route('/tester')
 def test_get():
-     return {'TEST': 'SUCCESFUL'}
+    response = {"TEST" : "SUCCESFUL"}
+    return jsonify(response)
 
 @api.route('/collection/<id>', methods=['POST'])
 @token_required
@@ -63,9 +64,16 @@ def update_car(current_user_token, id, car_id):
 @api.route('/collection/<id>/<car_id>', methods=['DELETE'])
 @token_required
 def delete_car(current_user_token, id, car_id):
+        
+        
         car = Car.query.get(car_id)
         db.session.delete(car)
         db.session.commit()
 
         response = car_schema.dump(car)
         return jsonify(response)
+    
+@api.route('/credentials', methods=['GET'])
+def get_credentials():
+    return [current_user.id, current_user.token]
+        

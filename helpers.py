@@ -27,7 +27,6 @@ def token_required(our_flask_function):
         try:
             current_user_token = User.query.filter_by(token = token).first()
             # taking token from request, saving to 'token', search for user with that token in the database
-            # and should grab the FIRST thing it finds in the database with that token.
             print(token)
             print(current_user_token)
         except:

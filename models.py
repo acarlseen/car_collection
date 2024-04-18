@@ -88,7 +88,7 @@ users_schema = UserSchema(many=True)
 
 class CarSchema(ma.Schema):
     class Meta:
-        fields = ('make', 'model', 'year', 'color', 'car_name')\
+        fields = ('id', 'make', 'model', 'year', 'color', 'car_name', 'vin')
         
 car_schema = CarSchema()
 cars_schema = CarSchema(many=True)
